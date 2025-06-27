@@ -8,17 +8,18 @@ export function registerUnlinkCommand() {
 }
 
 export async function handleUnlinkCommand(interaction: CommandInteraction) {
+  // Immediately acknowledge the interaction to prevent timeout
+  await interaction.deferReply({ ephemeral: true });
+  
   try {
     await removeUserProfile(interaction.user.id);
-    await interaction.reply({
-      content: 'Your Spotify account has been unlinked from MusicNerdCarl. You can use `/link` to connect again anytime!',
-      ephemeral: true
+    await interaction.editReply({
+      content: 'Your Spotify account has been unlinked from MusicNerdCarl. You can use `/link` to connect again anytime!'
     });
   } catch (error) {
     console.error('Error unlinking user:', error);
-    await interaction.reply({
-      content: 'Sorry, there was a problem unlinking your Spotify account. Please try again later.',
-      ephemeral: true
+    await interaction.editReply({
+      content: 'Sorry, there was a problem unlinking your Spotify account. Please try again later.'
     });
   }
 } 

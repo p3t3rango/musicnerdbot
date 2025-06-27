@@ -9,13 +9,15 @@ export function registerLinkCommand() {
 }
 
 export async function handleLinkCommand(interaction: ChatInputCommandInteraction) {
+  // Immediately acknowledge the interaction to prevent timeout
+  await interaction.deferReply({ ephemeral: true });
+  
   const userId = interaction.user.id;
   const userProfile = await getUserProfile(userId);
   
   if (userProfile?.spotify_token) {
-    await interaction.reply({
-      content: "You're already connected to Spotify! Use /track to get your current track info.",
-      ephemeral: true
+    await interaction.editReply({
+      content: "You're already connected to Spotify! Use /track to get your current track info."
     });
     return;
   }
@@ -24,8 +26,7 @@ export async function handleLinkCommand(interaction: ChatInputCommandInteraction
   await setUserLastChannel(userId, interaction.channelId);
   
   const authUrl = generateSpotifyAuthUrl(userId);
-  await interaction.reply({
-    content: `Click [here](${authUrl}) to connect your Spotify account.`,
-    ephemeral: true
+  await interaction.editReply({
+    content: `Click [here](${authUrl}) to connect your Spotify account.`
   });
 } 

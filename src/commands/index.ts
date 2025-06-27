@@ -4,6 +4,7 @@ import { registerTrackCommand } from './track';
 import { registerTasteCommand } from './taste';
 import { registerHelpCommand } from './help';
 import { registerUnlinkCommand } from './unlink';
+import { nerdoutCommand } from './nerdout';
 
 export async function registerCommands(client: Client) {
   const commands = [
@@ -12,6 +13,7 @@ export async function registerCommands(client: Client) {
     registerTasteCommand(),
     registerHelpCommand(),
     registerUnlinkCommand(),
+    nerdoutCommand.data,
   ];
 
   const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN!);
