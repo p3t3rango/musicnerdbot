@@ -1,7 +1,7 @@
 {
-  "name": "musicnerdcarl",
+  "name": "musicnerdbot",
   "version": "0.1.0",
-  "description": "A Discord bot that combines music criticism with Spotify integration - Carl 2.0",
+  "description": "A Discord bot that combines music criticism with Spotify integration",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

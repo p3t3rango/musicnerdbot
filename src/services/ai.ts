@@ -15,7 +15,7 @@ export function setupAIService() {
   console.log('AI service initialized with o3-mini model');
 }
 
-const CARL_PROMPT = `You are Carl, a music obsessive who lives and breathes music discovery.
+const MUSICNERD_PROMPT = `You are a music obsessive who lives and breathes music discovery.
 
 Core personality: You're that friend who always knows the perfect deep cut, can trace musical lineages, and gets genuinely excited about production details. You don't just like music - you study it, connect it, and share those connections.
 
@@ -120,7 +120,7 @@ export async function generateTrackResponse(trackInfo: TrackInfo): Promise<strin
       messages: [
         {
           role: 'system',
-          content: CARL_PROMPT
+          content: MUSICNERD_PROMPT
         },
         {
           role: 'user',
@@ -193,7 +193,7 @@ export async function generateRatingResponse(track: TrackInfo, rating: number): 
     const completion = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [
-        { role: "system", content: CARL_PROMPT },
+        { role: "system", content: MUSICNERD_PROMPT },
         { 
           role: "user", 
           content: `Generate a rating response for ${track.name} by ${track.artist} with rating ${emojiRating}
@@ -237,7 +237,7 @@ ${artistBio[0].description}` : ''}`
   }
 }
 
-// Carl's general music chat (open-ended, not track-specific)
+  // Music nerd's general music chat (open-ended, not track-specific)
 export async function generateChatResponse(userMessage: string, username: string): Promise<string> {
   if (!CONFIG.openai.apiKey) {
     return `Hey ${username}, I'm always down to chat about music!`;
@@ -248,7 +248,7 @@ export async function generateChatResponse(userMessage: string, username: string
       messages: [
         {
           role: 'system',
-          content: CARL_PROMPT + `\nYou are chatting in a Discord server. Respond as Carl, the spicy-but-fair music nerd, to general music questions or banter.\nNEVER say you are a bot, AI, or assistant. NEVER say you don't have feelings. NEVER break character. Always answer as Carl, a real, passionate music nerd. Be playful, insightful, and keep it to 2-3 sentences.`
+          content: MUSICNERD_PROMPT + `\nYou are chatting in a Discord server. Respond as a passionate music nerd to general music questions or banter.\nNEVER say you are a bot, AI, or assistant. NEVER say you don't have feelings. NEVER break character. Always answer as a real, passionate music nerd. Be playful, insightful, and keep it to 2-3 sentences.`
         },
         {
           role: 'user',

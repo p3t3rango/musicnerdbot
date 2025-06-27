@@ -24,8 +24,8 @@ export async function handleTasteCommand(interaction: CommandInteraction) {
     const allGenres = topArtists.flatMap(a => a.genres);
     const uniqueGenres = Array.from(new Set(allGenres)).slice(0, 5); // up to 5 genres
 
-    // Build a custom prompt for Carl
-    const tastePrompt = `Analyze this user's top artists: ${artistNames.join(', ')}.\nTheir top genres are: ${uniqueGenres.join(', ')}.\nGive a spicy, 2-3 sentence summary of their music taste, referencing trends, fun facts, and any bold opinions. Respond as Carl, the spicy-but-fair music nerd.`;
+    // Build a custom prompt for the music nerd bot
+    const tastePrompt = `Analyze this user's top artists: ${artistNames.join(', ')}.\nTheir top genres are: ${uniqueGenres.join(', ')}.\nGive a spicy, 2-3 sentence summary of their music taste, referencing trends, fun facts, and any bold opinions. Respond as a passionate music nerd.`;
 
     const response = await generateChatResponse(tastePrompt, interaction.user.username);
     await interaction.editReply(response);

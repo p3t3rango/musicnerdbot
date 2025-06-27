@@ -198,7 +198,7 @@ client.on(Events.MessageCreate, async message => {
       }
     }
 
-    // For all messages, provide conversation context to help Carl understand what's being discussed
+    // For all messages, provide conversation context to help the bot understand what's being discussed
     try {
       // Fetch recent conversation history
       const recentMessages = await message.channel.messages.fetch({ limit: 5 });
@@ -206,7 +206,7 @@ client.on(Events.MessageCreate, async message => {
         .filter(msg => msg.createdTimestamp > Date.now() - 10 * 60 * 1000) // Last 10 minutes
         .sort((a, b) => a.createdTimestamp - b.createdTimestamp) // Chronological order
         .map(msg => {
-          const author = msg.author.bot ? 'Carl' : msg.author.username;
+          const author = msg.author.bot ? 'MusicNerdBot' : msg.author.username;
           const content = msg.content.replace(/<@!?\d+>/g, '').trim(); // Remove mentions
           return `${author}: ${content}`;
         })

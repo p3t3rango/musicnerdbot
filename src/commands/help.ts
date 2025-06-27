@@ -7,7 +7,7 @@ export function registerHelpCommand() {
 }
 
 export async function handleHelpCommand(interaction: CommandInteraction) {
-  const helpMessage = `🎵 **MusicNerdCarl Help** 🎵
+  const helpMessage = `🎵 **MusicNerdBot Help** 🎵
 
 Here's how to use my features:
 
@@ -19,7 +19,7 @@ Here's how to use my features:
 • \`/help\` - Show this help message
 
 **Mentions:**
-You can also mention me (@MusicNerdCarl) in any message to get commentary on your current track!
+  You can also mention me (@MusicNerdBot) in any message to get commentary on your current track!
 
 **Tips:**
 • Make sure you're playing music on Spotify when using commands

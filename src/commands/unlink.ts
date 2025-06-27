@@ -4,14 +4,14 @@ import { removeUserProfile } from '../services/supabase';
 export function registerUnlinkCommand() {
   return new SlashCommandBuilder()
     .setName('unlink')
-    .setDescription('Unlink your Spotify account from MusicNerdCarl');
+    .setDescription('Unlink your Spotify account from MusicNerdBot');
 }
 
 export async function handleUnlinkCommand(interaction: CommandInteraction) {
   try {
     await removeUserProfile(interaction.user.id);
     await interaction.reply({
-      content: 'Your Spotify account has been unlinked from MusicNerdCarl. You can use `/link` to connect again anytime!',
+      content: 'Your Spotify account has been unlinked from MusicNerdBot. You can use `/link` to connect again anytime!',
       ephemeral: true
     });
   } catch (error) {
