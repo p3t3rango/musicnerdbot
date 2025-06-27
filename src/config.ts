@@ -24,10 +24,21 @@ export const CONFIG = {
     apiKey: process.env.OPENAI_API_KEY!,
   },
   
+  // Claude configuration
+  claude: {
+    apiKey: process.env.CLAUDE_API_KEY!,
+  },
+  
   // Supabase configuration
   supabase: {
     url: process.env.SUPABASE_URL!,
     key: process.env.SUPABASE_KEY!,
+  },
+  
+  // Google Custom Search API configuration
+  google: {
+    apiKey: process.env.GOOGLE_API_KEY!,
+    customSearchEngineId: process.env.GOOGLE_SEARCH_ENGINE_ID!,
   },
   
   // Brave API configuration
@@ -45,6 +56,6 @@ export const CONFIG = {
   // AI Persona settings
   persona: {
     maxResponseLength: 3, // Maximum number of sentences
-    emojiRatingScale: ['🧀', '🧀🧀', '🧀🧀🧀', '🧀🧀🧀🧀', '🧀��🧀🧀🧀'],
+    emojiRatingScale: ['🧀', '🧀🧀', '🧀🧀🧀', '🧀🧀🧀🧀', '��🧀🧀🧀'],
   },
 }; 

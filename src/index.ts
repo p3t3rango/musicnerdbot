@@ -76,6 +76,10 @@ client.on(Events.InteractionCreate, async interaction => {
       case 'unlink':
         await handleUnlinkCommand(interaction);
         break;
+      case 'nerdout':
+        const { nerdoutCommand } = await import('./commands/nerdout');
+        await nerdoutCommand.execute(interaction);
+        break;
       default:
         console.log(`Unknown command: ${interaction.commandName}`);
         if (!interaction.replied && !interaction.deferred) {

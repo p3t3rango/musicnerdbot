@@ -100,6 +100,7 @@ export interface TopItems {
 }
 
 export interface SpotifyTrack {
+  id: string;
   item: {
     name: string;
     artists: Array<{

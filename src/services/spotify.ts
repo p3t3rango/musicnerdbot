@@ -137,6 +137,7 @@ export async function getCurrentTrack(userId: string): Promise<SpotifyTrack | nu
     }
 
     const trackInfo: SpotifyTrack = {
+      id: trackId,
       item: {
         name: track.name,
         artists: track.artists.map(artist => ({
